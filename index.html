@@ -8,14 +8,205 @@
 <a class="btn btn-secondary btn-md px-4 mb-2 disabled" role=button><svg style="margin-right:3px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentcolor" class="bi bi-cpu" viewBox="0 0 16 16"><path d="M5 0a.5.5.0 01.5.5V2h1V.5a.5.5.0 011 0V2h1V.5a.5.5.0 011 0V2h1V.5a.5.5.0 011 0V2A2.5 2.5.0 0114 4.5h1.5a.5.5.0 010 1H14v1h1.5a.5.5.0 010 1H14v1h1.5a.5.5.0 010 1H14v1h1.5a.5.5.0 010 1H14A2.5 2.5.0 0111.5 14v1.5a.5.5.0 01-1 0V14h-1v1.5a.5.5.0 01-1 0V14h-1v1.5a.5.5.0 01-1 0V14h-1v1.5a.5.5.0 01-1 0V14A2.5 2.5.0 012 11.5H.5a.5.5.0 010-1H2v-1H.5a.5.5.0 010-1H2v-1H.5a.5.5.0 010-1H2v-1H.5a.5.5.0 010-1H2A2.5 2.5.0 014.5 2V.5A.5.5.0 015 0zm-.5 3A1.5 1.5.0 003 4.5v7A1.5 1.5.0 004.5 13h7a1.5 1.5.0 001.5-1.5v-7A1.5 1.5.0 0011.5 3h-7zM5 6.5A1.5 1.5.0 016.5 5h3A1.5 1.5.0 0111 6.5v3A1.5 1.5.0 019.5 11h-3A1.5 1.5.0 015 9.5v-3zM6.5 6a.5.5.0 00-.5.5v3a.5.5.0 00.5.5h3a.5.5.0 00.5-.5v-3A.5.5.0 009.5 6h-3z"/></svg>EHR Foundation Model (TBD)</a></div></div><div class="row justify-content-center text-center mt-3 mb-4"><div class="col-6 col-md-4"><h2 class="mt-3 mb-1">19,402</h2>patients</div><div class="col-6 col-md-4"><h2 class="mt-3 mb-1">23,248</h2>CTPA studies</div><div class="col-6 col-md-4"><h2 class="mt-3 mb-1">238,492,771</h2>medical events</div><div class="col-6 col-md-4"><h2 class="mt-3 mb-1">3</h2>fully linked modalities</div></div><div style=text-align:justify;text-justify:inter-word class=mt-4>Synthesizing information from various data sources plays a crucial role in the practice of modern medicine. Current applications of artificial intelligence in medicine often focus on single-modality data due to a lack of publicly available, multimodal medical datasets.<br><br>To address this limitation,<br><br><ol><li>We publish a new dataset, <strong>INSPECT</strong>, which contains de-identified longitudinal records from a large cohort of pulmonary embolism (PE) patients, along with ground truth labels for multiple outcomes. <strong>INSPECT</strong> contains structured data from the (1) electronic health record (EHR), (2) unstructured data from radiology reports, and (3) images from computed tomography pulmonary angiography (CTPA) scans. <strong>INSPECT</strong> is the first dataset to link these three modalities for a large cohort of patients.
 </li><li>Using <strong>INSPECT</strong>, we develop and release a benchmark for evaluating several baseline modeling approaches on a variety of important PE related tasks, including both <strong>diagnosis</strong> and <strong>prognosis</strong> tasks. We evaluate image-only, EHR-only, and fused models.</li><li>Trained models and the de-identified dataset are made available for non-commercial use under a data use agreement.</li></ol>Our model and dataset are available via a research data use agreement
 <a href=https://stanfordaimi.azurewebsites.net/datasets/521d0d11-7c3c-45ef-8b99-a49cd70cba2c target=_blank><u>at this link</u></a>.
-Code to reproduce our results is available <a href=https://github.com/som-shahlab/INSPECT_public target=_blank><u>at this link</u></a>.</div><div class="row justify-content-center d-md-block" style=margin-top:100px><h2 class="text-center text-primary">Overview</h2><hr style="width:40%;margin:0 auto" class=mb-3><p class=text-center>We collect the (1) electronic health record (EHR), (2) unstructured data from radiology reports, and (3) images from computed tomography pulmonary angiography (CTPA) scans from Stanford Hospital.</p><div class="col-lg-12 mx-auto"><img src=https://som-shahlab.github.io/inspect-website/images/Figure_1.png class="border-0 mt-2"></div></div><div class="row justify-content-center d-md-block" style=margin-top:100px><h2 class="text-center text-primary">Comparison to Prior Work</h2><hr style="width:40%;margin:0 auto" class=mb-3><p>Most prior benchmarks are (1) limited to the ICU setting and (2) not tailored towards few-shot evaluation of pre-trained models.
-In contrast, INSPECT contains (1) the full breadth of longitudinal data that a health system would expect to have on the patients it treats
-and (2) a broad range of tasks designed to evaluate models' task adaptation and few-shot capabilities.</p><div class="col-lg-12 mx-auto"><img src=https://som-shahlab.github.io/inspect-website/images/comparison.png class="border-0 mt-2"></div></div><div class="row justify-content-center d-md-block" style=margin-top:100px><h2 class="text-center text-primary">Tasks</h2><hr style="width:40%;margin:0 auto" class=mb-3><p class=text-center>INSPECT includes 15 clinical classification tasks with canonical train/val/test splits, defined as follows.</p><div class="col-lg-12 mx-auto my-4" style=overflow-x:scroll><table class=my-0 style=font-size:14px><tr><th>Task</th><th>Type</th><th>Prediction Time</th><th>Time Horizon</th></tr><tr><td>Long Length of Stay</td><td>Binary</td><td>11:59pm on day of admission</td><td>Admission duration</td></tr><tr><td>30-day Readmission</td><td>Binary</td><td>11:59pm on day of discharge</td><td>30-days post discharge</td></tr><tr><td>ICU Transfer</td><td>Binary</td><td>11:59pm on day of admission</td><td>Admission duration</td></tr><tr><td>Thrombocytopenia</td><td>4-way Multiclass</td><td>Immediately before result is recorded</td><td>Next result</td></tr><tr><td>Hyperkalemia</td><td>4-way Multiclass</td><td>Immediately before result is recorded</td><td>Next result</td></tr><tr><td>Hypoglycemia</td><td>4-way Multiclass</td><td>Immediately before result is recorded</td><td>Next result</td></tr><tr><td>Hyponatremia</td><td>4-way Multiclass</td><td>Immediately before result is recorded</td><td>Next result</td></tr><tr><td>Anemia</td><td>4-way Multiclass</td><td>Immediately before result is recorded</td><td>Next result</td></tr><tr><td>Hypertension</td><td>Binary</td><td>11:59pm on day of discharge</td><td>1 year post-discharge</td></tr><tr><td>Hyperlipidemia</td><td>Binary</td><td>11:59pm on day of discharge</td><td>1 year post-discharge</td></tr><tr><td>Pancreatic Cancer</td><td>Binary</td><td>11:59pm on day of discharge</td><td>1 year post-discharge</td></tr><tr><td>Celiac</td><td>Binary</td><td>11:59pm on day of discharge</td><td>1 year post-discharge</td></tr><tr><td>Lupus</td><td>Binary</td><td>11:59pm on day of discharge</td><td>1 year post-discharge</td></tr><tr><td>Acute MI</td><td>Binary</td><td>11:59pm on day of discharge</td><td>1 year post-discharge</td></tr><tr><td>Chest X-Ray Findings</td><td>14-way Multilabel</td><td>24hrs before report is recorded</td><td>Next report</td></tr></table></div><p class=text-center>We include a graphical summary of the different task definitions below.</p><div class="col-lg-12 mx-auto"><img src=https://som-shahlab.github.io/inspect-website/images/Figure_2.png class="border-0 mt-2"></div></div><div class="row justify-content-center d-md-block" style=margin-top:100px><h2 class="text-center text-primary">Benchmarking Results</h2><hr style="width:40%;margin:0 auto" class=mb-3><p>We evaluate each baseline model in a few-shot setting. For each of the 15 benchmark tasks, we
-steadily increase the number of examples <code>k</code> that each model sees from <code>k = 1</code> to the full training
-dataset, and record the model’s AUROC and AUPRC at each <code>k</code>.</p><p>In the below figures, the <strong>bolded lines</strong> are the Macro-AUC for each model within
-a task category, averaged across all subtasks at each <code>k</code>. The lighter lines are the AUC for
-each model on each subtask.</p><p>We include the performance of each model trained on the entire INSPECT training split on the
-far right of every plot as <em>"All"</em>.</p><p>Check out <a href=https://som-shahlab.github.io/inspect-website/leaderboard>the Leaderboard</a> for up-to-date results.</p><h5>AUROC</h5><div class="col-lg-12 mx-auto"><img src=https://som-shahlab.github.io/inspect-website/images/taskgroups_auroc_all.png class=border-0></div><h5 class=mt-3>AUPRC</h5><div class="col-lg-12 mx-auto"><img src=https://som-shahlab.github.io/inspect-website/images/taskgroups_auprc_all.png class=border-0></div></div></div></div></div></section></div></div><div class=container><div class="row justify-content-center"><h2>Citation</h2><pre id=arxiv-citation class="bg-light py-3">
+Code to reproduce our results is available <a href=https://github.com/som-shahlab/INSPECT_public target=_blank><u>at this link</u></a>.</div><div class="row justify-content-center d-md-block" style=margin-top:100px><h2 class="text-center text-primary">Overview</h2><hr style="width:40%;margin:0 auto" class=mb-3><p class=text-center>We collect the (1) electronic health record (EHR), (2) unstructured data from radiology reports, and (3) images from computed tomography pulmonary angiography (CTPA) scans from Stanford Hospital.</p><div class="col-lg-12 mx-auto"><img src=https://som-shahlab.github.io/inspect-website/images/Figure_1.png class="border-0 mt-2"></div></div><div class="row justify-content-center d-md-block" style=margin-top:100px><h2 class="text-center text-primary">Comparison to Prior Work</h2><hr style="width:40%;margin:0 auto" class=mb-3><p>Most prior medical multimodal data are (1) limited to single modality and (2) only 1 case per patient (i.e., no longitudinal data). (3) no prognosis tasks. (4) limited size of cohort. (5) no benchmarking of models.</p><p>
+In contrast, INSPECT contains (1) the <strong>full breadth</strong> of longitudinal data that a health system would expect to have on the patients it treats; (2) all <strong>three</strong> modalities are linked to each patient/study. (3) contains both <strong>diagnosis</strong> and <strong>prognosis</strong> tasks (4) provides reproducible codes for benchmarking.
+and </p>
+<table>
+  <thead>
+    <tr>
+      <th>Dataset</th>
+      <th>Imaging Modalities</th>
+      <th>Reports</th>
+      <th>EHR</th>
+      <th>#Patients</th>
+      <th>#Image Studies</th>
+      <th>Diagnostic Tasks</th>
+      <th>Prognostic Tasks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Open-I</td>
+      <td>Chest X-ray</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td></td>
+      <td>7,466</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>CheXpert</td>
+      <td>Chest X-ray</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>65,240</td>
+      <td>224,316</td>
+      <td>14</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>MIMIC-CXR</td>
+      <td>Chest X-ray</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>65,379</td>
+      <td>227,835</td>
+      <td>14</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>UK Biobank Imaging</td>
+      <td>Multiple MRI, DXA, Ultrasound</td>
+      <td>❌</td>
+      <td>*</td>
+      <td>100,000</td>
+      <td>Many</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>RSNA PE</td>
+      <td>CT</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>12,195</td>
+      <td>12,195</td>
+      <td>13</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>RadFusion</td>
+      <td>CT</td>
+      <td>❌</td>
+      <td>*</td>
+      <td>1,794</td>
+      <td>1,837</td>
+      <td>1</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>INSPECT (Ours)</td>
+      <td>CT</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>19,402</td>
+      <td>23,248</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!--
+  <div class="col-lg-12 mx-auto"><img src=https://som-shahlab.github.io/inspect-website/images/comparison.png class="border-0 mt-2"></div></div> 
+-->
+
+<div class="row justify-content-center d-md-block" style=margin-top:100px><h2 class="text-center text-primary">Breath of longitudinal EHR data</h2><hr style="width:40%;margin:0 auto" class=mb-3><p class=text-center><strong>INSPECT</strong> includes <strong>9</strong> STARR OMOP (STAnford Research Repository in Observational Medical Outcomes Partnership) tables to cover broad ranges of medical events</p><div class="col-lg-12 mx-auto my-4" style=overflow-x:scroll><table border="1" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th rowspan="2">Table Type</th>
+      <th colspan="2">Whole Cohort</th>
+      <th colspan="3">Per Patient</th>
+    </tr>
+    <tr>
+      <th># Records</th>
+      <th>Percentage</th>
+      <th>Median</th>
+      <th>Min</th>
+      <th>Max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Measurement</td>
+      <td>183,820,762</td>
+      <td style="background-color: #EDF6FF;">(76.9%)</td>
+      <td>3,783</td>
+      <td>0</td>
+      <td>500,368</td>
+    </tr>
+    <tr>
+      <td>Drug Exposure</td>
+      <td>17,288,279</td>
+      <td style="background-color: #EDF6FF;">(7.23%)</td>
+      <td>271</td>
+      <td>0</td>
+      <td>118,228</td>
+    </tr>
+    <tr>
+      <td>Procedure Occurrence</td>
+      <td>8,614,273</td>
+      <td style="background-color: #EDF6FF;">(3.6%)</td>
+      <td>190</td>
+      <td>1</td>
+      <td>35,926</td>
+    </tr>
+    <tr>
+      <td>Condition Occurrence</td>
+      <td>8,320,211</td>
+      <td style="background-color: #EDF6FF;">(3.48%)</td>
+      <td>148</td>
+      <td>0</td>
+      <td>27,480</td>
+    </tr>
+    <tr>
+      <td>Visit Occurrence</td>
+      <td>5,865,211</td>
+      <td style="background-color: #EDF6FF;">(2.45%)</td>
+      <td>126</td>
+      <td>1</td>
+      <td>16,336</td>
+    </tr>
+    <tr>
+      <td>Visit Detail</td>
+      <td>1,355,691</td>
+      <td style="background-color: #EDF6FF;">(0.56%)</td>
+      <td>23</td>
+      <td>0</td>
+      <td>4,840</td>
+    </tr>
+    <tr>
+      <td>Device Exposure</td>
+      <td>88,010</td>
+      <td style="background-color: #EDF6FF;">(0.03%)</td>
+      <td>1</td>
+      <td>0</td>
+      <td>682</td>
+    </tr>
+    <tr>
+      <td>Person</td>
+      <td>87,158</td>
+      <td style="background-color: #EDF6FF;">(0.03%)</td>
+      <td>4</td>
+      <td>1</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <td>Death</td>
+      <td>4,410</td>
+      <td style="background-color: #EDF6FF;">(0.001%)</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td>238,492,771</td>
+      <td style="background-color: #EDF6FF;">(100%)</td>
+      <td colspan="2">Average # per patient</td>
+      <td>12,292</td>
+    </tr>
+  </tbody>
+</table>
+
+<caption style="caption-side: bottom; text-align: center; padding-top: 8px;">
+  Summary statistics of the longitudinal EHR data included in the dataset.
+</caption>
+<h2 class="text-center text-primary">Benchmarking and Results</h2><hr style="width:40%;margin:0 auto" class=mb-3>
+</div><p class=text-center>We construct a per-modality backbone benchmark and use a late fusion strategy to produce final prediction.</p><div class="col-lg-12 mx-auto"><img src=https://som-shahlab.github.io/inspect-website/images/Figure_2.png class="border-0 mt-2"></div></div><div class="row justify-content-center d-md-block" style=margin-top:100px>
+</p><p>Check out <a href=https://som-shahlab.github.io/inspect-website/leaderboard><u>the Leaderboard</u></a></a> for up-to-date results.</p><div class=container><div class="row justify-content-center"><h2>Citation</h2><pre id=arxiv-citation class="bg-light py-3">
 @article{huang2023inspect,
   title={INSPECT: A Multimodal Dataset for Pulmonary Embolism Diagnosis and Prognosis}, 
   author={Shih-Cheng Huang*, Zepeng Huo*, Ethan Steinberg*, Chia-Chun Chiang, Matthew Lungren, Curtis Langlotz, Serena Yeung, Nigam Shah, Jason Fries},
