@@ -1,8 +1,8 @@
-# EHRSHOT Website
+# INSPECT Website
 
-Public website for EHRSHOT.
+Public website for INSPECT.
 
-URL: [https://ehrshot.stanford.edu/](https://ehrshot.stanford.edu/)
+URL: [https://inspect.stanford.edu/](https://inspect.stanford.edu/)
 
 ## Setup
 
